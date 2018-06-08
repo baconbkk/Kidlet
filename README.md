@@ -2,7 +2,7 @@
 
 Kidlet is a simple mobile wallet to store and transfer Xem and Kidlet Coins.
 
-####Kidlet is built on top of [Nempay](https://github.com/dgarcia360/NEMPay)
+***Kidlet is built on top of [Nempay](https://github.com/dgarcia360/NEMPay)***
 
 Kidlet is a customized version of Nempay except users can only store and transfer Xem and Kidlet Coins.
 All provided features of Nempay can be done in Kidlet.
@@ -16,7 +16,7 @@ All provided features of Nempay can be done in Kidlet.
 * View transactions
 * Share Address
 
-#### Extra features of Kidlet
+### Extra features of Kidlet
 * Notification when mosiac balance increases.
 * Fingerprint authentication
 * And more
