@@ -20,3 +20,10 @@ All provided features of Nempay can be done in Kidlet.
 * Notification when mosiac balance increases.
 * Fingerprint authentication
 * And more
+
+### NEMPay Info
+* [Nempay](https://github.com/dgarcia360/NEMPay)
+* [License](https://github.com/baconbkk/Kidlet/blob/master/LICENSE.md)
+* [Contribute](https://github.com/baconbkk/Kidlet/blob/master/CONTRIBUTING.md)
+* [Code of Conduct](https://github.com/baconbkk/Kidlet/blob/master/CODE_OF_CONDUCT.md)
+
