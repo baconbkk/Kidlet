@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="light" hideBackButton="true">
+      <button ion-button menuToggle class="force-display">
+          <ion-icon name="ios-menu-outline"></ion-icon>
+      </button>
+      <ion-title>
+          {{'SETTINGS' | translate}}
+      </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content id="about" padding>
+    <h1>Fingerprint Authorization</h1>
+    <div [hidden]="authorized">
+        <p>Add fingerprint authorization.</p>
+        <form (ngSubmit)="fingerprintAuth()">
+            <ion-list>
+                <ion-item>
+                    <ion-label>
+                        {{'PASSWORD' | translate}}
+                    </ion-label>
+                    <ion-input [(ngModel)]="pass" type="password" name="password" placeholder=""></ion-input>
+                </ion-item>
+            </ion-list>
+            <div class="spacer xs"></div>
+            <button [disabled]="!pass" ion-button color="positive" block type="submit">
+                Authorize App
+            </button>
+        </form>
+    </div>
+
+    <div [hidden]="!authorized">
+        <p>Fingerprint Authorization is approved.</p>
+        <button (click)="deleteFingerprint()" ion-button color="positive" block>
+            Unauthorize App
+        </button>
+    </div>
+</ion-content>

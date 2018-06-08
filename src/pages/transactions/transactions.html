@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-navbar color="light">
+        <button ion-button menuToggle>
+            <ion-icon name="ios-menu-outline"></ion-icon>
+        </button>
+        <ion-title>
+            {{'TRANSACTIONS' | translate}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding id="transactions">
+    <ion-tabs>
+        <ion-tab [root]="tab1Root" tabTitle="{{'CONFIRMED_TRANSACTIONS' | translate}} "></ion-tab>
+        <ion-tab [root]="tab2Root" tabTitle="{{'PENDING_TRANSACTIONS' | translate}} "></ion-tab>
+    </ion-tabs>
+</ion-content>

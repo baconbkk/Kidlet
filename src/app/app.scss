@@ -1,0 +1,79 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+/* Layout */
+
+.header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+  background: none;
+}
+
+.force-display{
+  display: block !important;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.pull-right{
+  float: right;
+}
+
+.spacer.xs{
+  height: 10px;
+}
+
+.spacer.s{
+  height: 20px;
+}
+
+.spacer.m{
+  height: 40px;
+}
+
+/* Colors */
+.background-white .toolbar-background-md{
+  background: #fff !important;
+}
+
+.background-white.toolbar-md{
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.color-plus{
+  color: #87D37C;
+}
+
+.color-less{
+  color: #f53d3d;
+}
+
+.black-color{
+  color: #000;
+}
+
+
+/* Transactions */
+.fit-long-address{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
+
+

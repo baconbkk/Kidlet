@@ -1,0 +1,38 @@
+<ion-menu [content]="mainContent" type="overlay">
+    <ion-header>
+        <ion-toolbar color="light">
+            <ion-title>
+              <img src="assets/img/logo.png" style="max-height:16px;"/> <span [innerHTML]="'APP_TITLE' | translate"></span>
+            </ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content id="side-menu21" style="background-color:Default;">
+        <ion-list id="menu-list1">
+            <button  ion-item color="none" menuClose="" on-click="goToBalance()" id="menu-list-item1">
+                {{"BALANCE" | translate}}
+            </button>
+            <button ion-item color="none" menuClose="" on-click="goToContactList()" id="menu-list-item3">
+                {{"CONTACT_LIST" | translate}}
+            </button>
+            <button ion-item color="none" menuClose="" on-click="goToTransactions()" id="menu-list-item4">
+                {{"TRANSACTIONS" | translate}}
+            </button>
+            <button ion-item color="none" menuClose="" on-click="goToSettings()" id="menu-list-item5">
+                {{"SETTINGS" | translate}}
+            </button>
+            <button ion-item color="none" menuClose="" on-click="goToAccount()" id="menu-list-item5">
+                {{"ACCOUNT" | translate}}
+            </button>
+            <button ion-item color="none" menuClose="" on-click="goToAbout()" id="menu-list-item5">
+                {{"ABOUT" | translate}}
+            </button>
+        </ion-list>
+    </ion-content>
+    <ion-footer>
+        <ion-toolbar class="text-center" color="light">
+            <span [innerHTML]="version"></span>
+        </ion-toolbar>
+    </ion-footer>
+</ion-menu>
+
+<ion-nav #mainContent [root]="rootPage"></ion-nav>

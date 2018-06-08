@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-navbar color="light" hideBackButton="true">
+        <button ion-button menuToggle class="force-display">
+            <ion-icon name="ios-menu-outline"></ion-icon>
+        </button>
+        <ion-title>
+            {{'BALANCE' | translate}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content id="balance" padding>
+
+    <ion-refresher (ionRefresh)="getBalance($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="{{'PULL_TO_REFRESH' | translate}} "
+                refreshingSpinner="circles"
+                refreshingText="{{'REFRESHING' | translate}} ">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <form>
+
+        <ion-list radio-group [(ngModel)]="selectedMosaic" name="selected-mosaic">
+            <ion-item *ngFor="let mosaic of balance">
+                <ion-radio [value]="mosaic"></ion-radio>
+
+                <ion-label><br><br>
+					<ion-title><b>{{ mosaic.amount }}</b></ion-title><br>
+					<ion-title><i>{{ mosaic.mosaicId.name }}</i></ion-title>
+					<br><br>
+                </ion-label>
+
+            </ion-item>
+        </ion-list>
+
+    </form>
+
+
+</ion-content>
+
+
+<ion-footer no-shadow>
+    <ion-toolbar position="bottom" class="background-white">
+        <div class="row">
+            <div class="col col-50">
+                <button ion-button block color="positive"
+                        on-click="goToTransfer()" [disabled]="!selectedMosaic">
+                    {{'TRANSFER_BUTTON' | translate}}
+                </button>
+            </div>
+            <div class="col col-50">
+                <button ion-button block color="secondary"
+                        on-click="goToReceive()" [disabled]="!selectedMosaic">
+                    {{'RECEIVE_BUTTON' | translate}}
+                </button>
+            </div>
+        </div>
+    </ion-toolbar>
+</ion-footer>

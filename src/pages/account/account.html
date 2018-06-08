@@ -1,0 +1,88 @@
+<ion-header>
+    <ion-navbar color="light">
+        <button ion-button menuToggle>
+            <ion-icon name="ios-menu-outline"></ion-icon>
+        </button>
+        <ion-title>
+            {{'ACCOUNT' | translate }}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content id="account" padding >
+    <div  class="default-padding">
+
+        <!-- QR -->
+        <div id="accountInfoQR"><img [src]="qrCode.src"></div>
+
+        <!-- ADDRESS -->
+
+        <div id="address">
+            <h1 class="black-color">
+                {{'YOUR_ADDRESS' | translate }}
+            </h1>
+
+            <p class="black-color">
+                {{selectedWallet?.address.pretty()}}
+            </p>
+
+            <button ion-button color="positive" block on-click="shareAddress()">
+                {{'SHARE_ADDRESS' | translate }}
+            </button>
+        </div>
+
+        <div id="account-spacer1" class="spacer" ></div>
+
+        <!-- PRIVATE KEY -->
+
+        <div class="private-key">
+            <h2>
+                {{'PRIVATE_KEY' | translate }}
+            </h2>
+            <p class="black-color">
+                {{'PRIVATE_KEY_SUBTITLE' | translate }}
+            </p>
+
+            <ion-list id="private-key-list">
+                <ion-item id="password-input" *ngIf='!common.privateKey'>
+                    <ion-label>
+                        {{'PASSWORD' | translate }}
+                    </ion-label>
+                    <ion-input type="password" [(ngModel)]="common.password" name="password"></ion-input>
+                </ion-item>
+                <p>
+                    {{'PASSWORD_WARNING' | translate }}
+                </p>
+            </ion-list>
+
+            <ion-row *ngIf='common.privateKey'>
+                <ion-col col-8> <p><b>{{ common.privateKey}}</b></p>
+                </ion-col>
+                <ion-col col-4>
+                    <button ion-button color="stable" block on-click="copyPrivateKeyToClipboard()">
+                        {{'COPY' | translate }}
+                    </button>
+                </ion-col>
+            </ion-row>
+
+            <button id="show-button" ion-button color="stable" block on-click="showPrivateKey()"
+                    [disabled]="!common.password" *ngIf='!common.privateKey'>
+                {{'SHOW_PRIVATE_KEY' | translate }}
+
+            </button>
+            <button id="hidde-button" ion-button color="stable" block on-click="hidePrivateKey()"
+                    *ngIf='common.privateKey'>
+                {{'HIDE_PRIVATE_KEY' | translate }}
+            </button>
+        </div>
+
+        <div id="account-spacer2" class="spacer"></div>
+        <!-- LOGOUT  -->
+
+        <div id="logout">
+
+            <button ion-button color="positive" block on-click="logout()">
+                {{'LOGOUT' | translate }}
+            </button>
+        </div>
+    </div>
+</ion-content>

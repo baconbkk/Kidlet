@@ -1,0 +1,13 @@
+<!-- Date (Timestamp) -->
+<p>
+    <b>{{'DATE' | translate}}:</b> {{tx.timeWindow.timeStamp.toString()}}
+</p>
+
+<!-- Fee -->
+<p *ngIf="tx.fee"><b>{{'FEE' | translate}}:</b> {{(tx.fee) /1000000}} xem</p>
+
+
+<!-- Message -->
+<p>
+    <b>{{ 'MULTISIG_AGGREGATE_MODIFICATION' | translate}}</b>
+</p>

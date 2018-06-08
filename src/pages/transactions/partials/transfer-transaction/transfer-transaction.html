@@ -1,0 +1,60 @@
+<h2>
+    <span *ngIf='tx.amount != 0 && !tx.mosaics'>
+        <span class="color-plus" *ngIf="owner?.plain() == tx?.recipient.plain()">
+            +
+        </span>
+        <span class="color-less" *ngIf="owner?.plain() != tx?.recipient.plain()">
+            -
+        </span>
+        {{tx.amount/1000000}} xem
+    </span>
+    <span *ngFor="let mos of tx.mosaics">
+
+        <span class="color-plus" *ngIf="owner?.plain() == tx?.recipient.plain()">
+            +
+        </span>
+        <span class="color-less" *ngIf="owner?.plain() != tx?.recipient.plain()">
+            -
+        </span>
+        {{ mos.amount?.toString() }} {{mos.mosaicId.name}}
+    </span>
+</h2>
+
+<!-- Sender or recipient -->
+<p class="fit-long-address">
+    <b>
+        <span *ngIf="owner?.plain() == tx?.recipient.plain()">{{'FROM' | translate}}</span>
+        <span *ngIf="owner?.plain() != tx?.recipient.plain()">{{'TO' | translate}}</span>:
+    </b>
+    {{tx.signer.address.plain() | searchContact:owner?.plain() | async}}
+</p>
+
+<!-- Date (Timestamp) -->
+<p>
+    <b>{{'DATE' | translate}}:</b> {{tx.timeWindow.timeStamp.toString()}}
+</p>
+
+<!-- Fee -->
+<p *ngIf="tx.fee"><b>{{'FEE' | translate}}:</b> {{tx.fee/1000000}} xem</p>
+
+<!-- Has levy -->
+<p>
+    <span *ngIf='hasLevy'>
+            <b>{{'LEVY' | translate}}</b>:
+    </span>
+    <span *ngFor="let mos of tx.mosaics;">
+        <span *ngIf="mos.levy?.mosaicId">
+            {{mos | formatLevy:(mos) | async}} {{mos.levy.mosaicId.name}}
+        </span>
+    </span>
+</p>
+
+<!-- Message -->
+<p *ngIf="tx.message">
+    <span *ngIf="!tx.message.isEncrypted() && tx.message.plain().length > 0">
+        <b> {{'MESSAGE' | translate}}:</b> {{tx.message.plain()}}
+    </span>
+    <span *ngIf="tx.message.isEncrypted()">
+        <b> {{'MESSAGE' | translate}}:</b> {{'ENCRYPTED' | translate}}.
+    </span>
+</p>

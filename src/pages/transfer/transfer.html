@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-navbar color="light">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            {{'TRANSFER' | translate}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding id="transfer">
+    <div class="default-padding">
+    <ion-row>
+        <ion-col>
+        <span  on-click="scanQR()" class="scan-button-wrapper">
+            <ion-icon name="qr-scanner"></ion-icon> {{'SCAN_QR' | translate}}
+        </span>
+        </ion-col>
+    </ion-row>
+    <form (ngSubmit)="startTransaction()">
+        <ion-item>
+            <ion-label stacked>
+                Your Address Book
+            </ion-label>
+            <ion-select (ionChange)="onSelectChange($event)">
+                <ion-option *ngFor="let contact of contacts" [value]="contact.address" >{{contact.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item id="transfer-input1">
+            <ion-label stacked>
+                {{'RECIPIENT_ADDRESS' | translate}}
+            </ion-label>
+            <ion-input type="text" name="recipient" placeholder="" [(ngModel)]="rawRecipient"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                {{'AMOUNT' | translate}}
+            </ion-label>
+            <ion-input type="number" min="0" name="amount" [(ngModel)]="amount" placeholder=""></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>
+                {{selectedMosaic.mosaicId.description()}}
+            </ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>
+                {{'MESSAGE' | translate}}
+            </ion-label>
+            <ion-textarea rows="8" name="message" placeholder="" [(ngModel)]="message"></ion-textarea>
+        </ion-item>
+        <div class="spacer xs"></div>
+
+        <button ion-button color="positive" block  [disabled]="amount > 9000000000">
+            {{'CONTINUE' | translate}}
+        </button>
+    </form>
+
+    </div>
+
+</ion-content>

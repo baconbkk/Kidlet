@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-navbar color="light" hideBackButton="true">
+        <button ion-button menuToggle class="force-display">
+            <ion-icon name="ios-menu-outline"></ion-icon>
+        </button>
+        <ion-title>
+            {{'CONTACT_LIST' | translate}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content id="contact-list" padding>
+
+    <ion-list>
+ 
+      <ion-item-sliding *ngFor="let contact of contacts">
+     
+        <ion-item (click)="goToUpdateContact(contact.id, contact.name, contact.address)">
+            {{contact.name}}
+        </ion-item>
+     
+        <ion-item-options>
+            <button primary (click)="goToUpdateContact(contact.id, contact.name, contact.address)"> <ion-icon name="ios-eye"></ion-icon> {{'EDIT' | translate}}</button>
+          <button danger (click)="deleteContact(contact.id)"> <ion-icon name="ios-close-outline"></ion-icon>{{'DELETE' | translate}}</button>
+        </ion-item-options>
+      </ion-item-sliding>
+ 
+  </ion-list>
+
+</ion-content>
+
+
+<ion-footer no-shadow>
+    <ion-toolbar position="bottom" class="background-white">
+        <div class="row">
+            <button ion-button  color="positive" class="col"
+                (click)="goToUpdateContact()">
+            {{'ADD_CONTACT' | translate}}
+        </button>
+        </div>
+    </ion-toolbar>
+</ion-footer>
